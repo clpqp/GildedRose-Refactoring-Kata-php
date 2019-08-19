@@ -6,10 +6,10 @@
 
 Запуск
 ---------------
-Скачать проект, выполнить 
+Скачать проект, распокавать архив, выполнить 
 
 ```
-cd GildedRose-Refactoring-Kata-php
+cd GildedRose-Refactoring-Kata-php-master
 composer install
 vendor/bin/phpunit
 php fixtures/texttest_fixture.php N где N - количество дней для вывода отчёта
