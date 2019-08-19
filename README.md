@@ -1,51 +1,31 @@
-Requirements
+Требования для установки
 ------------
 
 **PHP 7:**
 
-This is usually bundled with your operating system, or fetchable using a package manager like `apt` or `homebrew`.
-
-Windows users can find the latest version here: https://windows.php.net/download#php-7.3
-
-If you want to compile from source code, that can be found here: https://www.php.net/downloads.php
-
 **Composer:**
 
-Composer is PHP's main package and dependency management tool.
-
-It can be downloaded here: https://getcomposer.org/download/
-
-Getting Started
+Запуск
 ---------------
-
-To begin the kata, install the dependencies and run `phpunit`:
+Скачать проект, выполнить 
 
 ```
-cd php7
+cd GildedRose-Refactoring-Kata-php
 composer install
 vendor/bin/phpunit
+php fixtures/texttest_fixture.php N где N - количество дней для вывода отчёта
 ```
 
-If the "install" command does not work, try running `composer update` instead.
-This will tell composer that it has permission to look for a newer version of
-its dependencies.
-
-If things are still not cooperating, you can try this extreme approach:
-
-```
-composer remove phpunit/phpunit
-composer require phpunit/phpunit
-```
-
-To exercise the code outside of phpunit, for example to visually confirm that it is working,
-use the `texttest_fixture` script:
-
-```
-php fixtures/texttest_fixture.php
-```
-
-Tips
+Заметки
 ----
-
-PHPUnit has a very thorough reference manual. It would be particularly useful to explore the
-[Data Providers](https://phpunit.readthedocs.io/en/8.1/writing-tests-for-phpunit.html#data-providers) section.
+**Что сделано**
+  - Создан общий абстрактный класс AbstractItem;
+  - Созданы потомки класса AbstractItem -- Brie, Conjured, Legendary, Passes, Standart, в которых реализован метод updateQuality (для Ltgendary перегружен метод updateSellIn);
+  - Создана фабрика - App\Helpers\Fabric, создающая экземпляр класса, в зависимости от свойства item->name;
+  - Создан хелпер App\Helpers\QualityValidator для валидации значения quality (просто для удобства тестирования);
+  - Написаны тесты;
+  - Переписан класс App\GildedRose;
+**Что вызвало затруднение**
+  - Не совсем понял формулировку `Качество «Backstage passes» также, как и «Aged Brie», увеличивается по мере приближения к сроку хранения.` - Aged Brie имеет те же свойства, что и Backstage passes или это было указание на их схожесть по типу `Для товара «Aged Brie» качество увеличивается пропорционально возрасту;` реализовал второй вариант; 
+  - Большое кол-во условий в некоторых классах продуктор - не придумал адекватного способа от них избавиться.
+  
